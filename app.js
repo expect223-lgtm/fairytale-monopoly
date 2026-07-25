@@ -430,6 +430,17 @@ const CellDataTemplates = [
     { name: "毛絨小熊", type: "property", emoji: "🧸", price: 160, rent: 30, color: "#E2E8F0" },
     { name: "小惡魔", type: "imp", emoji: "😈", price: 0, color: "#FCA5A5" }
 ];
+// 可用動物棋子清單
+const CharacterAvatars = ["🐰", "🐶", "🐻", "🐱", "🦊", "🦁", "🐒", "🐼"];
+const CharacterColors = ["#FF4343", "#1A8CFF", "#2CD63C", "#FFD214", "#9F3BFF", "#FF69B4", "#FF8800", "#14B8A6"];
+
+// 預設 4 位玩家設定模板
+const DefaultPlayersSetup = [
+    { name: "小兔兔", avatar: "🐰", isAi: false, color: CharacterColors[0] },
+    { name: "小狗狗", avatar: "🐶", isAi: false, color: CharacterColors[1] },
+    { name: "熊嘟嘟", avatar: "🐻", isAi: true, color: CharacterColors[2] },
+    { name: "喵咪咪", avatar: "🐱", isAi: true, color: CharacterColors[3] }
+];
 
 // ==================== 兒童專用大字體彈窗系統 (代替 native alert/confirm/prompt) ====================
 function showCustomDialog({ title, message, type = 'alert', defaultInput = '' }) {
