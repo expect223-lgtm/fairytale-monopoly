@@ -1240,16 +1240,16 @@ function rollDiceAction() {
         3: {x: 0, y: -90},
         4: {x: 0, y: 90},
         5: {x: 90, y: 0},
-        6: {x: 180, y: 0}
+        6: {x: 180, y: 0, z: 180}
     };
 
-    diceElement1.style.transform = `rotateX(${targetRotations[roll1].x + xRand1}deg) rotateY(${targetRotations[roll1].y + yRand1}deg)`;
+    diceElement1.style.transform = `rotateX(${targetRotations[roll1].x + xRand1}deg) rotateY(${targetRotations[roll1].y + yRand1}deg) rotateZ(${targetRotations[roll1].z}deg)`;
     
     if (GameState.diceMode === 'double' && roll2 > 0) {
         document.getElementById("dice-container-2").style.display = "block";
         const xRand2 = (Math.floor(Math.random() * 3) + 3) * 360;
         const yRand2 = (Math.floor(Math.random() * 3) + 3) * 360;
-        diceElement2.style.transform = `rotateX(${targetRotations[roll2].x + xRand2}deg) rotateY(${targetRotations[roll2].y + yRand2}deg)`;
+        diceElement2.style.transform = `rotateX(${targetRotations[roll2].x + xRand2}deg) rotateY(${targetRotations[roll2].y + yRand2}deg) rotateZ(${targetRotations[roll2].z}deg)`;
     } else {
         document.getElementById("dice-container-2").style.display = "none";
     }
