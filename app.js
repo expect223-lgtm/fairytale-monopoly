@@ -1240,7 +1240,7 @@ function rollDiceAction() {
         3: {x: 0, y: -90},
         4: {x: 0, y: 90},
         5: {x: 90, y: 0},
-        6: {x: 180, y: 0}
+        6: {x: 180, y: 0 z: 180}
     };
 
     diceElement1.style.transform = `rotateX(${targetRotations[roll1].x + xRand1}deg) rotateY(${targetRotations[roll1].y + yRand1}deg)`;
