@@ -237,34 +237,34 @@ const ConfettiEffect = {
 
 // ==================== 兒童趣味 30 張命運卡庫 ====================
 const DestinyCards = [
-    { id: 1, title: "拾金不昧", type: "cash", value: 200, emoji: "👛", desc: "在路上撿到錢包送交警察局，獲得好心市民獎勵金 200 元！" },
+    { id: 1, title: "拾金不昧", type: "cash", value: 500, emoji: "👛", desc: "在路上撿到錢包送交警察局，獲得好心市民獎勵金 500 元！" },
     { id: 2, title: "環保小尖兵", type: "item", value: "shield", emoji: "🛡️", desc: "主動做好垃圾分類與回收，保護地球，獲得『免過路費護盾』一個！" },
-    { id: 3, title: "遲到處分", type: "cash", value: -100, emoji: "⏰", desc: "早上賴床錯過鬧鐘，上學遲到囉！被扣除零用錢 100 元以示警惕。" },
-    { id: 4, title: "小小閱讀王", type: "cash", value: 150, emoji: "📚", desc: "這個月認真閱讀了 10 本童話故事書，獲得圖書館頒發獎勵金 150 元！" },
-    { id: 5, title: "糖果屋派對", type: "distribute", value: -50, emoji: "🍬", desc: "買了超級好吃的彩虹糖分享給所有冒險家，支付每位玩家 50 元。" },
+    { id: 3, title: "遲到處分", type: "cash", value: -200, emoji: "⏰", desc: "早上賴床錯過鬧鐘，上學遲到囉！被扣除零用錢 200 元以示警惕。" },
+    { id: 4, title: "小小閱讀王", type: "cash", value: 300, emoji: "📚", desc: "這個月認真閱讀了 10 本童話故事書，獲得圖書館頒發獎勵金 300 元！" },
+    { id: 5, title: "糖果屋派對", type: "distribute", value: -100, emoji: "🍬", desc: "買了超級好吃的彩虹糖分享給所有冒險家，支付每位玩家 100 元。" },
     { id: 6, title: "魔法風暴", type: "teleport", value: -1, emoji: "🌀", desc: "突然颳起一陣神奇的童話旋風，隨機將你傳送到地圖的任意位置！" },
     { id: 7, title: "長輩紅包", type: "cash", value: 500, emoji: "🧧", desc: "過年跟長輩拜年，說了超級貼心的吉祥話，獲得大紅包 500 元！" },
     { id: 8, title: "保護牙齒", type: "cash", value: 120, emoji: "🪥", desc: "每天認真用貝氏刷牙法刷牙，檢查牙齒完全沒有蛀牙！獲得健康獎金 120 元。" },
     { id: 9, title: "幫忙做家事", type: "cash", value: 100, emoji: "🧹", desc: "主動幫爸爸媽媽拖地與倒垃圾，領到乖巧勞動零用錢 100 元！" },
-    { id: 10, title: "偏食小懲罰", type: "cash", value: -80, emoji: "🥦", desc: "吃晚餐時偷偷把青椒和花椰菜丟掉，被媽媽扣罰 80 元用來買健康水果。" },
+    { id: 10, title: "偏食小懲罰", type: "cash", value: -100, emoji: "🥦", desc: "吃晚餐時偷偷把青椒和花椰菜丟掉，被媽媽扣罰 100 元用來買健康水果。" },
     { id: 11, title: "好朋友分享", type: "item", value: "speed", emoji: "🚀", desc: "慷慨地把玩具借給鄰居小朋友玩，得到善意回饋：獲得『雙倍加速卡』一張！" },
     { id: 12, title: "跌倒受傷", type: "rest", value: 1, emoji: "🩹", desc: "走路一邊玩手機不看路，不小心摔倒擦傷！送去保健室包紮，暫停行動一回合。" },
-    { id: 13, title: "熱心助人", type: "cash", value: 120, emoji: "🧭", desc: "在路上遇到老奶奶迷路，熱心帶她到公車站，獲得老奶奶感謝紅包 120 元！" },
-    { id: 14, title: "上課講話", type: "cash", value: -50, emoji: "🗣️", desc: "上課時一直跟旁邊同學聊天，被老師罰站，並扣除日常表現點數折合 50 元。" },
+    { id: 13, title: "熱心助人", type: "cash", value: 200, emoji: "🧭", desc: "在路上遇到老奶奶迷路，熱心帶她到公車站，獲得老奶奶感謝紅包 200 元！" },
+    { id: 14, title: "上課講話", type: "cash", value: -100, emoji: "🗣️", desc: "上課時一直跟旁邊同學聊天，被老師罰站，並扣除日常表現點數折合 100 元。" },
     { id: 15, title: "路邊撿到寶", type: "item", value: "remote", emoji: "🎲", desc: "在魔法森林的草叢裡，幸運撿到一個神奇的『遙控骰子』！" },
-    { id: 16, title: "垃圾分類小達人", type: "cash", value: 100, emoji: "♻️", desc: "配合班級大掃除認真分類塑膠與紙類，獲得學校環保榮譽獎金 100 元！" },
+    { id: 16, title: "垃圾分類小達人", type: "cash", value: 300, emoji: "♻️", desc: "配合班級大掃除認真分類塑膠與紙類，獲得學校環保榮譽獎金 300 元！" },
     { id: 17, title: "提早完成功課", type: "item", value: "shield", emoji: "📝", desc: "放學一回家立刻認真把作業寫完，得到自由時間並獲得『免過路費護盾』防身！" },
-    { id: 18, title: "文具遺失", type: "cash", value: -80, emoji: "✏️", desc: "把自己的文具盒忘在公園長椅上弄丟了，花費 80 元重新購買文具。" },
+    { id: 18, title: "文具遺失", type: "cash", value: -120, emoji: "✏️", desc: "把自己的文具盒忘在公園長椅上弄丟了，花費 120 元重新購買文具。" },
     { id: 19, title: "童話神仙棒", type: "swap_prop", value: 0, emoji: "🪄", desc: "揮舞魔法神仙棒，你可以與目前擁有最高價值土地的對手交換一格土地！" },
     { id: 20, title: "發票幸運中獎", type: "cash", value: 200, emoji: "🎫", desc: "幫忙整理發票時，意外對中一張六獎發票，獲得幸運獎金 200 元！" },
     { id: 21, title: "惡魔搗蛋", type: "cash", value: -100, emoji: "😈", desc: "淘氣小惡魔趁你睡覺時偷走了你的錢包，損失 100 元！" },
-    { id: 22, title: "迷失森林", type: "backstep", value: 3, emoji: "🌲", desc: "在濃霧森林中迷路了，緊張地往回走了 3 步！" },
+    { id: 22, title: "迷失森林", type: "backstep", value: 5, emoji: "🌲", desc: "在濃霧森林中迷路了，緊張地往回走了 5 步！" },
     { id: 23, title: "拯救流浪幼犬", type: "cash", value: 150, emoji: "🐶", desc: "拯救受困在雨中的流浪狗，聯絡動保協會，獲得善行表揚金 150 元！" },
-    { id: 24, title: "錯過校車", type: "cash", value: -120, emoji: "🚌", desc: "出門磨磨蹭蹭，校車開走了！只好自費 120 元坐計程車去學校。" },
-    { id: 25, title: "溫馨生日派對", type: "collect", value: 30, emoji: "🎂", desc: "今天是你的生日！大家都為你送上溫馨祝福，每位玩家送你 30 元禮金。" },
+    { id: 24, title: "錯過校車", type: "cash", value: -150, emoji: "🚌", desc: "出門磨磨蹭蹭，校車開走了！只好自費 150 元坐計程車去學校。" },
+    { id: 25, title: "溫馨生日派對", type: "collect", value: 80, emoji: "🎂", desc: "今天是你的生日！大家都為你送上溫馨祝福，每位玩家送你 80 元禮金。" },
     { id: 26, title: "看電視太近", type: "cash", value: -70, emoji: "📺", desc: "看電視靠得太近，眼睛酸痛，花費 70 元眼科檢查與購買葉黃素護眼。" },
     { id: 27, title: "香蕉皮滑倒", type: "teleport_p", value: 0, emoji: "🍌", desc: "踩到路上的香蕉皮！咻地一聲摔到了隨機一位其他玩家所在的格子上！" },
-    { id: 28, title: "整理個人房間", type: "cash", value: 100, emoji: "🛏️", desc: "把玩具歸類放好、棉被摺好，房間煥然一新！爸爸媽媽獎勵 100 元。" },
+    { id: 28, title: "整理個人房間", type: "cash", value: 120, emoji: "🛏️", desc: "把玩具歸類放好、棉被摺好，房間煥然一新！爸爸媽媽獎勵 120 元。" },
     { id: 29, title: "貪玩忘記時間", type: "rest", value: 1, emoji: "🎠", desc: "在兒童樂園玩旋轉木馬忘記了上課時間，被留在校門口休息反省一回合。" },
     { id: 30, title: "智慧之星", type: "item", value: "trap", emoji: "💥", desc: "答對了最難的謎題，智慧之神賜予你一張『陷阱卡』！" }
 ];
@@ -287,6 +287,17 @@ const DefaultQuestions = [
     // 低年級 (low) - 社會
     { grade: "low", subject: "social", text: "看到紅綠燈的『綠燈』閃爍並變成『紅燈』時，我們應該怎麼辦？", options: ["快點跑過去", "停在路口安全處等待", "不管它直接走", "在馬路中間玩遊戲"], answer: "B" },
     { grade: "low", subject: "social", text: "吃完便當後的紙盒與吃剩的骨頭，應該怎麼分類？", options: ["全部丟一般垃圾", "紙盒回收，骨頭丟廚餘", "全部拿去燒掉", "隨便丟在路邊"], answer: "B" },
+    // 低年級 (low) - 新增 10 題
+    { grade: "low", subject: "math", text: "媽媽買了 8 顆蘋果，小明吃了 3 顆，還剩下幾顆蘋果？", options: ["3顆", "4顆", "5顆", "6顆"], answer: "C" },
+    { grade: "low", subject: "math", text: "請問 15 減去 7 等於多少？", options: ["6", "7", "8", "9"], answer: "C" },
+    { grade: "low", subject: "math", text: "一個星期共有幾天？", options: ["5天", "6天", "7天", "8天"], answer: "C" },
+    { grade: "low", subject: "chinese", text: "請問『月亮』的『亮』注音第一個聲母是什麼？", options: ["ㄌ", "ㄋ", "ㄇ", "ㄉ"], answer: "A" },
+    { grade: "low", subject: "chinese", text: "『小鳥在樹上＿＿歌』，空格裡填哪一個字最合適？", options: ["唱", "喝", "跑", "跳"], answer: "A" },
+    { grade: "low", subject: "english", text: "英文單字中，『貓咪』的英文怎麼寫？", options: ["Dog", "Cat", "Pig", "Duck"], answer: "B" },
+    { grade: "low", subject: "english", text: "請問數字『3』的英文單字是什麼？", options: ["One", "Two", "Three", "Four"], answer: "C" },
+    { grade: "low", subject: "science", text: "白天的天空主要靠什麼發光照亮大地？", options: ["月亮", "星星", "太陽", "手電筒"], answer: "C" },
+    { grade: "low", subject: "science", text: "下列哪一種動物是在水裡用鰓呼吸游泳的？", options: ["小狗", "小魚", "小貓", "小雞"], answer: "B" },
+    { grade: "low", subject: "social", text: "搭乘公車或捷運時，看到座位有老人或孕婦，我們應該怎麼做？", options: ["假裝沒看到", "主動讓座", "大聲喊叫", "搶著坐下"], answer: "B" },
 
     // 中高年級 (mid-high) - 數學
     { grade: "mid-high", subject: "math", text: "算算看： 120 乘以 5 再除以 6 等於多少？", options: ["80", "100", "120", "150"], answer: "B" },
@@ -304,6 +315,17 @@ const DefaultQuestions = [
     // 中高年級 (mid-high) - 社會
     { grade: "mid-high", subject: "social", text: "台灣最高的山峰是哪一座？海拔大約是多少公尺？", options: ["阿里山，約2600公尺", "雪山，約3886公尺", "玉山，約3952公尺", "陽明山，約1120公尺"], answer: "C" },
     { grade: "mid-high", subject: "social", text: "在台灣歷史上，安平古堡是哪一個國家最早建立的城堡（熱蘭遮城）？", options: ["西班牙", "荷蘭", "日本", "英國"], answer: "B" }
+   // 中高年級 (mid-high) - 新增 10 題
+    { grade: "mid-high", subject: "math", text: "算算看：9 乘以 8 再加上 12 等於多少？", options: ["72", "80", "84", "90"], answer: "C" },
+    { grade: "mid-high", subject: "math", text: "長方形的長是 8 公分，寬是 5 公分，請問它的周長是多少公分？", options: ["13公分", "26公分", "40公分", "80公分"], answer: "B" },
+    { grade: "mid-high", subject: "math", text: "將三分之二（2/3）化成以 6 為分母的分數，分子應該是多少？", options: ["2", "3", "4", "5"], answer: "C" },
+    { grade: "mid-high", subject: "chinese", text: "『井底之＿＿』常用來比喻見識狹小的人，空格應填入什麼？", options: ["魚", "蛙", "鳥", "龜"], answer: "B" },
+    { grade: "mid-high", subject: "chinese", text: "下列哪一個成語用來形容『做事非常認真專注，連吃飯睡覺都忘了』？", options: ["廢寢忘食", "走馬看花", "畫蛇添足", "三心二意"], answer: "A" },
+    { grade: "mid-high", subject: "english", text: "英文單字中，『Bookstore』的意思是什麼？", options: ["麵包店", "花店", "書店", "水果店"], answer: "C" },
+    { grade: "mid-high", subject: "english", text: "『Water』是指水，那『Ice』是指什麼？", options: ["蒸氣", "冰塊", "果汁", "牛奶"], answer: "B" },
+    { grade: "mid-high", subject: "science", text: "植物進行光合作用時，主要是吸收哪一種氣體並釋放氧氣？", options: ["氮氣", "氫氣", "二氧化碳", "氦氣"], answer: "C" },
+    { grade: "mid-high", subject: "science", text: "請問地球繞著什麼天體公轉一圈需要約 365 天（一年）？", options: ["月球", "太陽", "火星", "木星"], answer: "B" },
+    { grade: "mid-high", subject: "social", text: "台灣位於哪一個大洋的西邊？", options: ["太平洋", "印度洋", "大西洋", "北極海"], answer: "A" },
 ];
 
 // ==================== IndexedDB 個人照片資料庫輔助器 ====================
@@ -776,7 +798,7 @@ async function startGame() {
             avatarImg: customAvatar || null,
             isAi: setup.isAi,
             color: setup.color,
-            cash: 1500, // 初始資金
+            cash: 2500, // 初始資金
             position: 0,
             bankrupt: false,
             items: {
