@@ -430,6 +430,7 @@ const CellDataTemplates = [
     { name: "毛絨小熊", type: "property", emoji: "🧸", price: 160, rent: 30, color: "#E2E8F0" },
     { name: "小惡魔", type: "imp", emoji: "😈", price: 0, color: "#FCA5A5" }
 ];
+
 // ==================== 兒童專用大字體彈窗系統 (代替 native alert/confirm/prompt) ====================
 function showCustomDialog({ title, message, type = 'alert', defaultInput = '' }) {
     return new Promise((resolve) => {
