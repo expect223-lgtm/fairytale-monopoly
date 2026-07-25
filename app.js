@@ -590,46 +590,46 @@ async function useSelectedPhoto() {
 }
 
 // ==================== 玩家資料管理與 UI 生成 ====================
+// 預設 4 位玩家設定模板
+const DefaultPlayersSetup = [
+    { name: "小兔兔", avatar: "🐰", isAi: false, color: "#FF4343" },
+    { name: "小狗狗", avatar: "🐶", isAi: false, color: "#1A8CFF" },
+    { name: "熊嘟嘟", avatar: "🐻", isAi: true, color: "#2CD63C" },
+    { name: "喵咪咪", avatar: "🐱", isAi: true, color: "#FFD214" }
+];
+
+// 本地玩家設定暫存陣列
 let localPlayersSetup = JSON.parse(JSON.stringify(DefaultPlayersSetup));
 
-async function renderSetupPlayers() {
+function renderSetupPlayers() {
     const container = document.getElementById("setup-players-list");
-    if (!container) return;
+    if (!container) {
+        console.error("找不到 setup-players-list 容器！");
+        return;
+    }
+    
     container.innerHTML = "";
 
-    for (let i = 0; i < localPlayersSetup.length; i++) {
-        const p = localPlayersSetup[i];
+    // 若陣列空了，強制還原預設值
+    if (!localPlayersSetup || localPlayersSetup.length === 0) {
+        localPlayersSetup = JSON.parse(JSON.stringify(DefaultPlayersSetup));
+    }
+
+    localPlayersSetup.forEach((p, i) => {
         const card = document.createElement("div");
         card.className = `setup-player-card ${p.isAi ? 'ai-card' : ''}`;
-        card.style.borderColor = p.color;
+        card.style.borderColor = p.color || '#000';
 
-        // 移除按鈕 (至少保留 2 位)
+        // 刪除按鈕 (至少保留 2 位)
         let removeBtnHtml = "";
         if (localPlayersSetup.length > 2) {
             removeBtnHtml = `<span class="remove-player-btn" onclick="removePlayerSetup(${i})">&times;</span>`;
         }
 
-        // 安全讀取頭像照片
-        let customAvatarData = null;
-        try {
-            if (typeof DbHelper !== 'undefined' && DbHelper.getAvatar) {
-                customAvatarData = await DbHelper.getAvatar(`setup_player_${i}`);
-            }
-        } catch (err) {
-            console.warn("讀取個人頭像失敗，使用預設 Emoji", err);
-        }
-
-        let avatarContent = "";
-        if (customAvatarData) {
-            avatarContent = `<img src="${customAvatarData}" alt="頭像">`;
-        } else {
-            avatarContent = `<span class="avatar-emoji">${p.avatar}</span>`;
-        }
-
         card.innerHTML = `
             ${removeBtnHtml}
             <div class="setup-avatar-wrapper" onclick="triggerAvatarUpload('setup_player_${i}')">
-                ${avatarContent}
+                <span class="avatar-emoji">${p.avatar}</span>
                 <div class="camera-icon">📸 更換照片</div>
             </div>
             <input type="text" value="${p.name}" onchange="updateSetupPlayerName(${i}, this.value)">
@@ -639,7 +639,7 @@ async function renderSetupPlayers() {
             </select>
         `;
         container.appendChild(card);
-    }
+    });
 }
 
 function updateSetupPlayerName(idx, val) {
