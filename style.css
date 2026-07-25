@@ -1,0 +1,1549 @@
+/* ==========================================
+   歡樂童話大富翁 - Pixar 風格 樣式表
+   ========================================== */
+
+/* 全域變數與重設 */
+:root {
+    --primary-yellow: #FFD214;
+    --primary-red: #FF4343;
+    --primary-blue: #1A8CFF;
+    --primary-green: #2CD63C;
+    --magical-purple: #9F3BFF;
+    --candy-pink: #FF69B4;
+    --sunny-orange: #FF8800;
+    --dark-bg: #1E293B;
+    --light-bg: #E0F2FE;
+    --board-border: #0C66E4;
+    
+    --font-heading: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+    --font-body: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, #FFF9E6 0%, #E0F2FE 100%);
+    color: #1E293B;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Confetti 煙火畫布 */
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* 主遊戲容器 */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    width: 98vw;
+    height: 98vh;
+    padding: 1vh 1vw;
+}
+
+/* 遊戲標頭 */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 0 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border: 3px solid #000;
+    margin-bottom: 1vh;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-emoji {
+    font-size: 2rem;
+    animation: spin 8s linear infinite;
+}
+
+.game-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #FFD214;
+    text-shadow: 3px 3px 0px #C2410C, -1.5px -1.5px 0px #000, 1.5px -1.5px 0px #000, -1.5px 1.5px 0px #000, 1.5px 1.5px 0px #000;
+    letter-spacing: 1px;
+}
+
+.header-center {
+    display: flex;
+    gap: 15px;
+}
+
+.status-badge {
+    background: var(--primary-yellow);
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 4px 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 2px 2px 0px #000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-right {
+    display: flex;
+    gap: 8px;
+}
+
+.header-btn {
+    background: var(--primary-blue);
+    color: white;
+    border: 2px solid #000;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #000;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.header-btn.secondary {
+    background: #E2E8F0;
+    color: #000;
+}
+
+.header-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px #000;
+}
+
+.header-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+/* 10x10 棋盤 (36格) */
+.board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 4px;
+    width: 98vw;
+    height: 87vh;
+    background: #93C5FD;
+    padding: 6px;
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    border: 6px solid #000;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* 中央主控面板 (佔據第2-9行與2-9列) */
+.center-panel {
+    grid-column: 2 / 10;
+    grid-row: 2 / 10;
+    background: linear-gradient(to bottom, #FFFDEB 0%, #FFEFC8 100%);
+    border-radius: 18px;
+    border: 4px dashed #D97706;
+    padding: 1.2vh 1.5vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(217, 119, 6, 0.15);
+}
+
+/* 中央面版各個視圖 */
+.center-view {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center-view.active {
+    display: flex;
+}
+
+/* 歡迎/設定視圖 */
+#setup-view h2 {
+    font-size: 2.2rem;
+    color: var(--primary-red);
+    text-shadow: 2px 2px 0 #FFF, 3px 3px 0 #000;
+    margin-bottom: 8px;
+    font-weight: 900;
+}
+
+#setup-view .subtitle {
+    font-size: 1.2rem;
+    color: #475569;
+    margin-bottom: 2vh;
+}
+
+.setup-section {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    border: 3px solid #000;
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 1.5vh;
+    box-shadow: 4px 4px 0 #000;
+}
+
+.setup-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #1E293B;
+}
+
+.setup-players-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.setup-player-card {
+    background: white;
+    border: 3px solid #000;
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: transform 0.2s;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.setup-player-card:hover {
+    transform: translateY(-2px);
+}
+
+.setup-player-card.ai-card {
+    background: #F1F5F9;
+}
+
+.setup-player-card .remove-player-btn {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--primary-red);
+    color: white;
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 0 #000;
+}
+
+.setup-avatar-wrapper {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    background: #E2E8F0;
+    overflow: hidden;
+    margin-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.setup-avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.setup-avatar-wrapper .avatar-emoji {
+    font-size: 3.5rem;
+}
+
+.setup-avatar-wrapper .camera-icon {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 0.6rem;
+    text-align: center;
+    padding: 2px 0;
+}
+
+.setup-player-card input[type="text"] {
+    width: 100%;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 6px;
+    font-size: 1.05rem;
+    font-family: var(--font-heading);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.setup-player-card select {
+    width: 100%;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 4px;
+    font-size: 0.95rem;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    background: white;
+    cursor: pointer;
+}
+
+.setup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.flex-row {
+    display: flex;
+    gap: 15px;
+}
+
+.mode-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.mode-item label {
+    font-weight: 900;
+    font-size: 1rem;
+    color: #1E293B;
+}
+
+.mode-item select, .mode-item input[type="number"] {
+    width: 100%;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: white;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #000;
+    cursor: pointer;
+}
+
+/* 棋盤格子基礎樣式 */
+.board-cell {
+    border: 3px solid #000;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.board-cell:hover {
+    transform: scale(1.03);
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* 格子邊欄著色 */
+.cell-header-color {
+    width: calc(100% + 8px);
+    height: 12px;
+    margin-top: -4px;
+    border-bottom: 2px solid #000;
+    border-radius: 8px 8px 0 0;
+}
+
+.board-cell.corner-cell {
+    background: #FEF08A; /* 角落黃色 */
+}
+
+/* 格子內 Name 與 Icon 的排版容器 (Icon 在左，文字與金額在右並上下疊放) */
+.cell-main-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    padding: 2px 4px;
+    box-sizing: border-box;
+}
+
+.cell-left-icon {
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.cell-right-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.board-cell .cell-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 900;
+    text-align: left;
+    word-break: break-all;
+    line-height: 1.2;
+    color: #1E293B;
+    text-shadow: 1px 1px 0px #FFF;
+}
+
+.board-cell .cell-price {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 900;
+    background: #FFF;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 1px 6px;
+    margin-top: 3px;
+    box-shadow: 1.5px 1.5px 0 #000;
+    color: #1E293B;
+}
+
+/* 格子上的房屋星星 */
+.cell-stars {
+    display: flex;
+    gap: 1px;
+    font-size: 0.65rem;
+    color: #FBBF24;
+    position: absolute;
+    top: 14px;
+}
+
+/* 格子上的房屋擁有者標記 (懸浮於底部左側，配合底部右側的棋子與中間的金額) */
+.cell-owner-indicator {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    display: none;
+    box-shadow: 1.5px 1.5px 0 rgba(0,0,0,0.3);
+}
+
+/* 棋子渲染區 (懸浮在格子底部右側，不破壞文字金額排版) */
+.cell-tokens-container {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    display: flex;
+    gap: 3px;
+    justify-content: flex-end;
+    align-items: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.token {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2.5px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.35);
+    animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+    cursor: pointer;
+}
+
+.token.has-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 3D 骰子設計 */
+.dice-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vh 0;
+}
+
+.dice-wrapper {
+    display: flex;
+    gap: 30px;
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+    height: 130px;
+    align-items: center;
+}
+
+.dice-container {
+    width: 110px;
+    height: 110px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dice3d {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.3, 1.05);
+}
+
+.face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #FFFFFF 60%, #E2E8F0 100%);
+    border: 4px solid #000;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--primary-red);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* CSS 3D 立方體旋轉定位 (100px 寬度，故 translateZ 需設為 50px) */
+.face.front  { transform: rotateY(0deg) translateZ(50px); }
+.face.back   { transform: rotateY(180deg) translateZ(50px); color: var(--primary-blue); }
+.face.right  { transform: rotateY(90deg) translateZ(50px); color: var(--magical-purple); }
+.face.left   { transform: rotateY(-90deg) translateZ(50px); color: var(--sunny-orange); }
+.face.top    { transform: rotateX(90deg) translateZ(50px); color: var(--primary-green); }
+.face.bottom { transform: rotateX(-90deg) translateZ(50px); color: var(--candy-pink); }
+
+/* 3D 骰子點數旋轉角度 */
+.dice3d[data-roll="1"] { transform: rotateX(0deg) rotateY(0deg); }
+.dice3d[data-roll="2"] { transform: rotateX(-90deg) rotateY(0deg); }
+.dice3d[data-roll="3"] { transform: rotateX(0deg) rotateY(-90deg); }
+.dice3d[data-roll="4"] { transform: rotateX(0deg) rotateY(90deg); }
+.dice3d[data-roll="5"] { transform: rotateX(90deg) rotateY(0deg); }
+.dice3d[data-roll="6"] { transform: rotateX(180deg) rotateY(0deg); }
+
+/* 擲骰按鈕 */
+.dice-actions {
+    margin-top: 15px;
+}
+
+/* 道具卡片樣式 */
+.player-items-section {
+    width: 90%;
+    margin-bottom: 2vh;
+    text-align: left;
+}
+
+.player-items-section h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.player-items-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-height: 40px;
+}
+
+.item-card-mini {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: white;
+    border: 2px solid #000;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #000;
+    transition: transform 0.1s;
+}
+
+.item-card-mini:hover {
+    transform: translateY(-2px);
+    background: #FFF9E6;
+}
+
+.item-card-mini:active {
+    transform: translateY(1px);
+}
+
+.item-card-mini .badge-count {
+    background: var(--primary-red);
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 10px;
+    padding: 1px 6px;
+    border: 1px solid #000;
+}
+
+/* 遊戲玩家儀表板 (支援多位玩家橫向單行自動縮放排版) */
+.players-dashboard {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.dashboard-card {
+    background: white;
+    border: 3px solid #000;
+    border-radius: 16px;
+    padding: 6px 10px;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 3px 3px 0 #000;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 玩家數較多 (5人以上) 時，自動縮小玩家資訊卡內容以防垂直溢出與遮擋 */
+.players-dashboard:has(> :nth-child(5)) {
+    gap: 4px;
+}
+
+.players-dashboard:has(> :nth-child(5)) .dashboard-card {
+    padding: 4px 6px;
+    min-height: 64px;
+    gap: 4px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.players-dashboard:has(> :nth-child(5)) .dashboard-avatar {
+    width: 38px;
+    height: 38px;
+}
+
+.players-dashboard:has(> :nth-child(5)) .p-name {
+    font-size: 0.85rem;
+}
+
+.players-dashboard:has(> :nth-child(5)) .p-cash {
+    font-size: 0.8rem;
+}
+
+.players-dashboard:has(> :nth-child(5)) .p-props {
+    font-size: 0.65rem;
+}
+
+.players-dashboard:has(> :nth-child(5)) .p-shields-row {
+    font-size: 0.7rem;
+}
+
+.dashboard-card.active-turn {
+    border-color: var(--primary-red);
+    background: #FFF9E6;
+    animation: cardPulse 1.5s infinite alternate;
+}
+
+.dashboard-card.bankrupt-card {
+    opacity: 0.5;
+    background: #E2E8F0;
+}
+
+.dashboard-card .card-border-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #000;
+}
+
+.dashboard-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    overflow: hidden;
+    background: #E2E8F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.dashboard-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dashboard-avatar .avatar-emoji {
+    font-size: 2.4rem;
+}
+
+.dashboard-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.dashboard-info .p-name {
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 130px;
+}
+
+.dashboard-info .p-cash {
+    font-weight: 900;
+    color: var(--primary-green);
+    font-size: 1.35rem;
+    text-shadow: 1px 1px 0px #FFF;
+    -webkit-text-stroke: 0.5px #000;
+}
+
+.dashboard-info .p-props {
+    font-size: 0.95rem;
+    color: #64748B;
+}
+
+.p-shields-row {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 0.9rem;
+}
+
+/* 按鈕樣式 */
+.btn {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    border: 3px solid #000;
+    border-radius: 12px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    box-shadow: 4px 4px 0 #000;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn.primary {
+    background: var(--primary-yellow);
+    color: #000;
+}
+
+.btn.secondary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn.text-danger {
+    background: white;
+    color: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #000;
+}
+
+.btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #000;
+}
+
+.btn.block {
+    display: block;
+    width: 100%;
+}
+
+.btn.large {
+    font-size: 1.4rem;
+    padding: 12px 35px;
+}
+
+/* 回合廣播 */
+.turn-announcer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.player-turn-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-blue);
+    color: white;
+    border: 3px solid #000;
+    border-radius: 20px;
+    padding: 6px 24px;
+    font-size: 1.4rem;
+    font-weight: 900;
+    box-shadow: 4px 4px 0 #000;
+}
+
+.instruction-text {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #64748B;
+    margin-top: 8px;
+}
+
+/* ==================== 對話框 / 彈窗 ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.65);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.25s ease-out;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border: 5px solid #000;
+    border-radius: 24px;
+    width: 480px;
+    max-width: 90%;
+    padding: 24px;
+    position: relative;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.25);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content.large {
+    width: 850px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--primary-red);
+}
+
+.modal h2 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* 題庫管理排版 */
+.quiz-manager-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1.3fr;
+    gap: 20px;
+}
+
+.quiz-creator-form {
+    background: #FFFBEB;
+    border: 3px solid #000;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+}
+
+.form-group label {
+    font-weight: 900;
+    font-size: 0.95rem;
+}
+
+.form-group select, .form-group input, .form-group textarea {
+    width: 100%;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.quiz-browser {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filter-bar select {
+    flex: 1;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.quiz-list-container {
+    border: 3px solid #000;
+    border-radius: 12px;
+    height: 300px;
+    overflow-y: auto;
+    background: #F8FAFC;
+    padding: 8px;
+}
+
+.quiz-item-row {
+    background: white;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.quiz-item-row .q-details {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.quiz-item-row .q-details span {
+    background: #E2E8F0;
+    border-radius: 4px;
+    padding: 1px 4px;
+    margin-right: 4px;
+}
+
+.delete-q-btn {
+    background: var(--primary-red);
+    color: white;
+    border: 2.5px solid #000;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* 設定與雲端備份 */
+.setting-block {
+    border: 3px solid #000;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #FFF9E6;
+}
+
+.setting-block h3 {
+    margin-bottom: 8px;
+}
+
+.tip {
+    font-size: 0.85rem;
+    color: #64748B;
+    margin-bottom: 10px;
+}
+
+.saves-list-container {
+    background: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.save-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid #E2E8F0;
+    padding: 6px 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.save-item:last-child {
+    border: none;
+}
+
+/* 答題挑戰彈窗 */
+.challenge-content {
+    background: #EFF6FF;
+    border-color: var(--primary-blue);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.challenge-header {
+    margin-bottom: 15px;
+}
+
+.subject-tag {
+    background: var(--primary-blue);
+    color: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 4px 15px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.option-btn {
+    background: white;
+    border: 3px solid #000;
+    border-radius: 16px;
+    padding: 12px 15px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 #000;
+    transition: transform 0.1s, background-color 0.1s;
+    text-align: left;
+}
+
+.option-btn:hover {
+    transform: translateY(-2px);
+    background-color: #F1F5F9;
+}
+
+.option-btn:active {
+    transform: translateY(1px);
+}
+
+.option-btn.correct {
+    background-color: var(--primary-green) !important;
+    color: white;
+}
+
+.option-btn.wrong {
+    background-color: var(--primary-red) !important;
+    color: white;
+}
+
+.reward-hint {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--primary-red);
+    margin-top: 20px;
+}
+
+.timer-bar-container {
+    width: 100%;
+    height: 10px;
+    background: #E2E8F0;
+    border-radius: 5px;
+    border: 2px solid #000;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.timer-bar {
+    width: 100%;
+    height: 100%;
+    background: var(--primary-red);
+    border-radius: 5px;
+    transition: width 0.1s linear;
+}
+
+/* 幸運大轉盤 */
+.wheel-content {
+    background: #FAF5FF;
+    border-color: var(--magical-purple);
+}
+
+.wheel-container {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    margin: 15px auto;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -35px;
+    left: calc(50% - 24px);
+    font-size: 3rem;
+    z-index: 100;
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 8px solid #000;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transition: transform 4s cubic-bezier(0.15, 0.85, 0.25, 1.02);
+}
+
+#wheel-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.wheel-result-text {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--magical-purple);
+    margin-top: 15px;
+    min-height: 35px;
+}
+
+/* 命運卡片抽取 */
+.card-draw-content {
+    background: #FFFDF0;
+    border-color: var(--sunny-orange);
+}
+
+.card-box {
+    width: 200px;
+    height: 280px;
+    perspective: 600px;
+    margin: 15px auto;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1.2); /* 加上回彈效果 */
+    cursor: pointer;
+}
+
+.card-inner:hover {
+    transform: translateY(-8px) rotate(2deg);
+}
+
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-inner.flipped:hover {
+    transform: rotateY(180deg) translateY(-8px);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #000;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.card-front {
+    background: linear-gradient(135deg, var(--sunny-orange) 0%, var(--primary-yellow) 100%);
+    color: #000;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+}
+
+.card-front .card-logo {
+    font-size: 3.5rem;
+    animation: bounce 1.5s infinite alternate;
+}
+
+.card-front p {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+.card-back {
+    background: white;
+    transform: rotateY(180deg);
+}
+
+.card-emoji {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.card-back h3 {
+    font-size: 1.35rem;
+    margin-bottom: 8px;
+    color: #1E293B;
+}
+
+.card-back p {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: #475569;
+    line-height: 1.4;
+}
+
+/* 結束排行榜 */
+.victory-crown {
+    font-size: 4rem;
+    display: block;
+    animation: bounce 1s infinite alternate;
+}
+
+.rank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    background: #F1F5F9;
+    border: 2.5px solid #000;
+    border-radius: 16px;
+    padding: 10px 20px;
+    gap: 15px;
+    box-shadow: 2px 2px 0 #000;
+}
+
+.rank-item.rank-1 {
+    background: #FEF08A;
+    border-color: var(--sunny-orange);
+    border-width: 3.5px;
+    transform: scale(1.03);
+}
+
+.rank-num {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 900;
+    width: 30px;
+}
+
+.rank-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rank-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rank-avatar .avatar-emoji {
+    font-size: 1.8rem;
+}
+
+.rank-name {
+    font-weight: bold;
+    font-size: 1.15rem;
+    flex: 1;
+    text-align: left;
+}
+
+.rank-wealth {
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--primary-green);
+}
+
+/* 魔法商店列表 */
+.shop-inventory {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.shop-item {
+    background: #FFFBEB;
+    border: 2.5px solid #000;
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    box-shadow: 3px 3px 0 #000;
+}
+
+.shop-item .item-icon {
+    font-size: 2.5rem;
+}
+
+.shop-item h4 {
+    font-weight: 900;
+    font-size: 1.05rem;
+}
+
+.shop-item p {
+    font-size: 0.8rem;
+    color: #475569;
+    min-height: 38px;
+}
+
+.shop-item .price {
+    font-weight: 900;
+    color: var(--primary-red);
+    font-size: 1rem;
+}
+
+.shop-item button {
+    width: 100%;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 #000;
+    padding: 5px;
+    font-size: 0.95rem;
+}
+
+/* 照片上傳 */
+.avatar-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: #F8FAFC;
+    border: 2.5px dashed #64748B;
+    border-radius: 16px;
+}
+
+.preview-box {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #000;
+    background: #E2E8F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.avatar-placeholder {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #64748B;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ==================== 動畫與排版輔助 ==================== */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes cardPulse {
+    0% { box-shadow: 2px 2px 0 #000; }
+    100% { box-shadow: 0 0 12px rgba(239, 68, 68, 0.6); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.85); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ==================== 互動金幣雨 ==================== */
+.falling-coin {
+    position: fixed;
+    font-size: 2.8rem;
+    cursor: pointer;
+    z-index: 10000;
+    user-select: none;
+    animation: fall 2.5s linear forwards;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+}
+
+.falling-coin:hover {
+    transform: scale(1.3);
+}
+
+@keyframes fall {
+    0% { top: -60px; transform: translateX(0) rotate(0deg); }
+    100% { top: 105vh; transform: translateX(60px) rotate(360deg); }
+}
+
+/* ==================== 理財教育小知識看板 ==================== */
+.educational-board {
+    background: #FFFDF0; /* 溫馨鵝黃色背景 */
+    border: 3.5px solid #000;
+    border-radius: 18px;
+    padding: 12px 20px;
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: 4px 4px 0 #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: popIn 0.3s ease-out;
+}
+
+.educational-board .board-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #C2410C;
+    border-bottom: 2px dashed #C2410C;
+    padding-bottom: 3px;
+    letter-spacing: 1px;
+}
+
+.educational-board .board-content {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #475569;
+    text-align: center;
+    line-height: 1.5;
+}
