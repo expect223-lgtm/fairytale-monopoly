@@ -1531,7 +1531,7 @@ body {
 
 .educational-board .board-title {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.45rem;
     font-weight: 900;
     color: #C2410C;
     border-bottom: 2px dashed #C2410C;
@@ -1541,9 +1541,9 @@ body {
 
 .educational-board .board-content {
     font-family: var(--font-body);
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     font-weight: bold;
-    color: #475569;
+    color: #334155;
     text-align: center;
     line-height: 1.5;
 }
