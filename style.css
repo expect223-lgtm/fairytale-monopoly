@@ -227,6 +227,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     width: 100%;
+    min-height: 150px;
     margin-bottom: 10px;
 }
 
