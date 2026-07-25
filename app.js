@@ -511,39 +511,39 @@ function showCustomDialog({ title, message, type = 'alert', defaultInput = '' })
 
 // ==================== 初始化事件與載入 ====================
 document.addEventListener("DOMContentLoaded", async () => {
-    // 初始化 IndexedDB
-    try {
-        await DbHelper.init();
-    } catch (e) {
-        console.error(e);
-    }
-
-    // 初始化 Canvas 粒子
-    ConfettiEffect.init();
-
-    // 載入自訂題庫
-    loadCustomQuestions();
-
-    // 初始化玩家設定 UI 列表
+    // 1. 先渲染玩家設定選單（確保角色一定會出現）
     renderSetupPlayers();
 
-    // 綁定按鈕點擊
-    document.getElementById("btn-add-player").addEventListener("click", addNewPlayer);
-    document.getElementById("btn-start-game").addEventListener("click", startGame);
-    document.getElementById("btn-roll-dice").addEventListener("click", rollDiceAction);
-    document.getElementById("btn-save-question").addEventListener("click", saveCustomQuestion);
-    document.getElementById("btn-reset-questions").addEventListener("click", resetQuestionsToDefault);
-    document.getElementById("btn-quiz-manager").addEventListener("click", () => openModal("modal-quiz"));
-    document.getElementById("btn-settings").addEventListener("click", () => openModal("modal-settings"));
-    document.getElementById("btn-save-game").addEventListener("click", saveGameData);
-    document.getElementById("btn-load-game").addEventListener("click", () => loadGameData());
-    document.getElementById("btn-restart").addEventListener("click", restartGame);
-    document.getElementById("btn-confirm-avatar").addEventListener("click", useSelectedPhoto);
-    document.getElementById("chk-enable-firebase").addEventListener("change", toggleFirebaseFields);
-    document.getElementById("btn-save-firebase").addEventListener("click", saveFirebaseConfig);
+    // 2. 初始化 IndexedDB
+    try {
+        await DbHelper.init();
+        // 初始化成功後重新渲染一次（若有已存照片可帶入）
+        renderSetupPlayers();
+    } catch (e) {
+        console.error("IndexedDB 初始化失敗，採用預設模式：", e);
+    }
+
+    // 3. 初始化 Canvas 粒子與題庫
+    if (typeof ConfettiEffect !== 'undefined') ConfettiEffect.init();
+    loadCustomQuestions();
+
+    // 4. 綁定按鈕事件
+    document.getElementById("btn-add-player")?.addEventListener("click", addNewPlayer);
+    document.getElementById("btn-start-game")?.addEventListener("click", startGame);
+    document.getElementById("btn-roll-dice")?.addEventListener("click", rollDiceAction);
+    document.getElementById("btn-save-question")?.addEventListener("click", saveCustomQuestion);
+    document.getElementById("btn-reset-questions")?.addEventListener("click", resetQuestionsToDefault);
+    document.getElementById("btn-quiz-manager")?.addEventListener("click", () => openModal("modal-quiz"));
+    document.getElementById("btn-settings")?.addEventListener("click", () => openModal("modal-settings"));
+    document.getElementById("btn-save-game")?.addEventListener("click", saveGameData);
+    document.getElementById("btn-load-game")?.addEventListener("click", () => loadGameData());
+    document.getElementById("btn-restart")?.addEventListener("click", restartGame);
+    document.getElementById("btn-confirm-avatar")?.addEventListener("click", useSelectedPhoto);
+    document.getElementById("chk-enable-firebase")?.addEventListener("change", toggleFirebaseFields);
+    document.getElementById("btn-save-firebase")?.addEventListener("click", saveFirebaseConfig);
 
     // 頭像上傳預覽
-    document.getElementById("avatar-input").addEventListener("change", previewUploadedPhoto);
+    document.getElementById("avatar-input")?.addEventListener("change", previewUploadedPhoto);
     
     // 初始化幸運大轉盤畫布
     drawLuckyWheelCanvas();
@@ -594,6 +594,7 @@ let localPlayersSetup = JSON.parse(JSON.stringify(DefaultPlayersSetup));
 
 async function renderSetupPlayers() {
     const container = document.getElementById("setup-players-list");
+    if (!container) return;
     container.innerHTML = "";
 
     for (let i = 0; i < localPlayersSetup.length; i++) {
@@ -608,8 +609,16 @@ async function renderSetupPlayers() {
             removeBtnHtml = `<span class="remove-player-btn" onclick="removePlayerSetup(${i})">&times;</span>`;
         }
 
-        // 頭像讀取 (從 IndexedDB 載入已上傳相片)
-        const customAvatarData = await DbHelper.getAvatar(`setup_player_${i}`);
+        // 安全讀取頭像照片
+        let customAvatarData = null;
+        try {
+            if (typeof DbHelper !== 'undefined' && DbHelper.getAvatar) {
+                customAvatarData = await DbHelper.getAvatar(`setup_player_${i}`);
+            }
+        } catch (err) {
+            console.warn("讀取個人頭像失敗，使用預設 Emoji", err);
+        }
+
         let avatarContent = "";
         if (customAvatarData) {
             avatarContent = `<img src="${customAvatarData}" alt="頭像">`;
