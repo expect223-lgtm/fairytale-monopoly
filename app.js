@@ -380,43 +380,44 @@ let GameState = {
 };
 
 // 棋盤格子的靜態資料 (36格)
+// 棋盤格子的靜態資料 (36格，包含新增的數學挑戰*3、綜合挑戰*3、大轉盤*2)
 const CellDataTemplates = [
     { name: "起點", type: "start", emoji: "🚩", price: 0, color: "#CCCCCC" },
     { name: "草莓屋", type: "property", emoji: "🍦", price: 100, rent: 10, color: "#FFB7B2" },
     { name: "巧克力屋", type: "property", emoji: "🍦", price: 120, rent: 15, color: "#FFB7B2" },
     { name: "薄荷屋", type: "property", emoji: "🍦", price: 130, rent: 18, color: "#FFB7B2" },
     { name: "傳送門", type: "portal", emoji: "🌀", price: 0, color: "#E8AEFF" },
+    { name: "綜合挑戰", type: "all_quiz", emoji: "❓", price: 0, color: "#A7F3D0" }, // 綜合挑戰 1
     { name: "棉花糖屋", type: "property", emoji: "🍬", price: 140, rent: 20, color: "#FFDAC1" },
     { name: "糖果屋", type: "property", emoji: "🍬", price: 160, rent: 25, color: "#FFDAC1" },
     { name: "棒棒糖屋", type: "property", emoji: "🍬", price: 180, rent: 30, color: "#FFDAC1" },
-    { name: "捐款處", type: "tax", emoji: "🏛️", price: 0, color: "#CBD5E1" },
+    { name: "大轉盤", type: "wheel", emoji: "🎡", price: 0, color: "#F472B6" },      // 大轉盤 1
     { name: "暴龍園", type: "property", emoji: "🦕", price: 200, rent: 40, color: "#E2F0CB" },
     { name: "三角龍園", type: "property", emoji: "🦕", price: 220, rent: 45, color: "#E2F0CB" },
     { name: "翼龍園", type: "property", emoji: "🦕", price: 240, rent: 50, color: "#E2F0CB" },
-    { name: "劍龍園", type: "property", emoji: "🦕", price: 260, rent: 55, color: "#E2F0CB" },
-    { name: "數學挑戰", type: "math_quiz", emoji: "❓", price: 0, color: "#93C5FD" },
+    { name: "數學挑戰", type: "math_quiz", emoji: "📐", price: 0, color: "#93C5FD" }, // 數學挑戰 1
     { name: "滑水道", type: "property", emoji: "🏊", price: 280, rent: 60, color: "#BFFCC6" },
     { name: "漂漂河", type: "property", emoji: "🏊", price: 300, rent: 70, color: "#BFFCC6" },
     { name: "巨浪池", type: "property", emoji: "🏊", price: 320, rent: 80, color: "#BFFCC6" },
-    { name: "小惡魔", type: "imp", emoji: "😈", price: 0, color: "#FCA5A5" },
+    { name: "綜合挑戰", type: "all_quiz", emoji: "❓", price: 0, color: "#A7F3D0" }, // 綜合挑戰 2
     { name: "粉紅堡", type: "property", emoji: "🏰", price: 350, rent: 100, color: "#FFC6FF" },
     { name: "星空堡", type: "property", emoji: "🏰", price: 380, rent: 120, color: "#FFC6FF" },
     { name: "水晶堡", type: "property", emoji: "🏰", price: 420, rent: 140, color: "#FFC6FF" },
+    { name: "數學挑戰", type: "math_quiz", emoji: "📐", price: 0, color: "#93C5FD" }, // 數學挑戰 2
     { name: "黃金堡", type: "property", emoji: "🏰", price: 450, rent: 160, color: "#FFC6FF" },
     { name: "魔法商店", type: "shop", emoji: "🧹", price: 0, color: "#FDE047" },
     { name: "探險號", type: "property", emoji: "🚀", price: 340, rent: 90, color: "#D6E4FF" },
     { name: "追夢號", type: "property", emoji: "🚀", price: 360, rent: 100, color: "#D6E4FF" },
-    { name: "先鋒號", type: "property", emoji: "🚀", price: 400, rent: 110, color: "#D6E4FF" },
-    { name: "大轉盤", type: "wheel", emoji: "🎡", price: 0, color: "#F472B6" },
+    { name: "大轉盤", type: "wheel", emoji: "🎡", price: 0, color: "#F472B6" },      // 大轉盤 2
     { name: "松木屋", type: "property", emoji: "🏡", price: 220, rent: 45, color: "#D1FAE5" },
     { name: "橡木屋", type: "property", emoji: "🏡", price: 240, rent: 50, color: "#D1FAE5" },
     { name: "小紅屋", type: "property", emoji: "🏡", price: 260, rent: 55, color: "#D1FAE5" },
-    { name: "巨人屋", type: "property", emoji: "🏡", price: 280, rent: 60, color: "#D1FAE5" },
-    { name: "綜合挑戰", type: "all_quiz", emoji: "❓", price: 0, color: "#A7F3D0" },
+    { name: "數學挑戰", type: "math_quiz", emoji: "📐", price: 0, color: "#93C5FD" }, // 數學挑戰 3
+    { name: "綜合挑戰", type: "all_quiz", emoji: "❓", price: 0, color: "#A7F3D0" }, // 綜合挑戰 3
     { name: "機器人工廠", type: "property", emoji: "🤖", price: 120, rent: 20, color: "#E2E8F0" },
     { name: "發條汽車", type: "property", emoji: "🚗", price: 140, rent: 25, color: "#E2E8F0" },
     { name: "毛絨小熊", type: "property", emoji: "🧸", price: 160, rent: 30, color: "#E2E8F0" },
-    { name: "魔法分店", type: "shop", emoji: "🧹", price: 0, color: "#FDE047" }
+    { name: "小惡魔", type: "imp", emoji: "😈", price: 0, color: "#FCA5A5" }
 ];
 
 // 可用動物棋子清單
@@ -1240,7 +1241,7 @@ function rollDiceAction() {
         3: {x: 0, y: -90},
         4: {x: 0, y: 90},
         5: {x: 90, y: 0},
-        6: {x: 180, y: 0}
+        6: {x: 180, y: 0, z: 180}
     };
 
     diceElement1.style.transform = `rotateX(${targetRotations[roll1].x + xRand1}deg) rotateY(${targetRotations[roll1].y + yRand1}deg)`;
