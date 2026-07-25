@@ -378,6 +378,7 @@ let GameState = {
     firebaseEnabled: false,
     firebaseConfig: null
 };
+
 // 棋盤格子的靜態資料 (36格，包含新增的數學挑戰*3、綜合挑戰*3、大轉盤*2)
 const CellDataTemplates = [
     { name: "起點", type: "start", emoji: "🚩", price: 0, color: "#CCCCCC" },
