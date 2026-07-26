@@ -275,35 +275,55 @@ const DefaultQuestions = [
     { grade: "low", subject: "math", text: "小兔有 5 個冰淇淋，小熊又給了牠 7 個，小兔現在一共有幾個冰淇淋？", options: ["10個", "11個", "12個", "13個"], answer: "C" },
     { grade: "low", subject: "math", text: "三角形有幾條邊和幾個角？", options: ["2條邊，2個角", "3條邊，3個角", "4條邊，4個角", "5條邊，5個角"], answer: "B" },
     { grade: "low", subject: "math", text: "一隻手有 5 根手指頭，兩隻手一共有幾根手指頭？", options: ["8根", "9根", "10根", "12根"], answer: "C" },
+    { grade: "low", subject: "math", text: "小華有 15 元，買了一支 8 元的鉛筆，他還剩下多少元？", options: ["5元", "6元", "7元", "8元"], answer: "C" },
+    { grade: "low", subject: "math", text: "時鐘上的長針指著12，短針指著9，請問是幾點鐘？", options: ["9點鐘", "12點鐘", "3點鐘", "6點鐘"], answer: "A" },
     // 低年級 (low) - 國語
     { grade: "low", subject: "chinese", text: "請問『太陽』的『陽』注音是什麼？", options: ["ㄧㄤˊ", "ㄧㄤ", "ㄧㄢˊ", "ㄤˊ"], answer: "A" },
     { grade: "low", subject: "chinese", text: "下面哪一個字用來形容鳥叫的聲音？", options: ["咚咚", "嘰嘰喳喳", "嘩啦啦", "呼呼"], answer: "B" },
+    { grade: "low", subject: "chinese", text: "請問『月亮』的『亮』注音是什麼？", options: ["ㄌㄧㄤˊ", "ㄌㄧㄤˋ", "ㄋㄧㄤˋ", "ㄧㄤˋ"], answer: "B" },
+    { grade: "low", subject: "chinese", text: "以下哪一個字是『小』的相反字？", options: ["多", "大", "長", "高"], answer: "B" },
     // 低年級 (low) - 英文
     { grade: "low", subject: "english", text: "英文單字中，『蘋果』的正確拼法是什麼？", options: ["Aple", "Apple", "Appel", "Apel"], answer: "B" },
     { grade: "low", subject: "english", text: "黃色在英文中叫做什麼？", options: ["Red", "Blue", "Green", "Yellow"], answer: "D" },
+    { grade: "low", subject: "english", text: "請問『貓咪』的英文單字是什麼？", options: ["Dog", "Cat", "Bird", "Pig"], answer: "B" },
+    { grade: "low", subject: "english", text: "數字『5』的英文拼法是什麼？", options: ["Four", "Five", "Six", "Three"], answer: "B" },
     // 低年級 (low) - 自然
     { grade: "low", subject: "science", text: "以下哪一種動物會生蛋，而且不會飛？", options: ["蝴蝶", "企鵝", "小狗", "蝙蝠"], answer: "B" },
     { grade: "low", subject: "science", text: "西瓜是長在什麼地方的植物？", options: ["高大的大樹上", "地面的藤蔓上", "水池裡面的泥土中", "石頭縫隙裡"], answer: "B" },
+    { grade: "low", subject: "science", text: "以下哪一種天氣出門最需要帶雨傘？", options: ["晴天", "下雨天", "陰天", "大風天"], answer: "B" },
+    { grade: "low", subject: "science", text: "植物生長主要是靠哪裡吸收土壤中的水分？", options: ["花朵", "葉子", "根", "果實"], answer: "C" },
     // 低年級 (low) - 社會
     { grade: "low", subject: "social", text: "看到紅綠燈的『綠燈』閃爍並變成『紅燈』時，我們應該怎麼辦？", options: ["快點跑過去", "停在路口安全處等待", "不管它直接走", "在馬路中間玩遊戲"], answer: "B" },
     { grade: "low", subject: "social", text: "吃完便當後的紙盒與吃剩的骨頭，應該怎麼分類？", options: ["全部丟一般垃圾", "紙盒回收，骨頭丟廚餘", "全部拿去燒掉", "隨便丟在路邊"], answer: "B" },
+    { grade: "low", subject: "social", text: "在學校受傷時，應該去哪裡找護士阿姨幫忙擦藥？", options: ["圖書館", "校長室", "健康中心（保健室）", "體育器材室"], answer: "C" },
+    { grade: "low", subject: "social", text: "請問撥打什麼號碼可以聯絡消防局來滅火或救護？", options: ["110", "119", "113", "123"], answer: "B" },
 
     // 中高年級 (mid-high) - 數學
     { grade: "mid-high", subject: "math", text: "算算看： 120 乘以 5 再除以 6 等於多少？", options: ["80", "100", "120", "150"], answer: "B" },
     { grade: "mid-high", subject: "math", text: "一個正方形的周長是 36 公分，請問它的面積是多少平方公分？", options: ["36平方公分", "81平方公分", "72平方公分", "144平方公分"], answer: "B" },
     { grade: "mid-high", subject: "math", text: "若一個圓形的直徑是 10 公分，圓周率約為 3.14，則圓周長是多少公分？", options: ["31.4公分", "15.7公分", "78.5公分", "62.8公分"], answer: "A" },
+    { grade: "mid-high", subject: "math", text: "梯形的面積公式是什麼？", options: ["底×高÷2", "（上底＋下底）×高÷2", "底×高", "邊長×邊長"], answer: "B" },
+    { grade: "mid-high", subject: "math", text: "有一個數的 3 倍是 150，請問這個數的 5 倍是多少？", options: ["200", "250", "300", "350"], answer: "B" },
     // 中高年級 (mid-high) - 國語
     { grade: "mid-high", subject: "chinese", text: "『□□補牢』這句成語中，空格內填入什麼動物最合適？", options: ["守株", "亡羊", "畫蛇", "騎虎"], answer: "B" },
     { grade: "mid-high", subject: "chinese", text: "『買櫝還珠』常用來比喻什麼意思？", options: ["買東西很划算", "捨本逐末，取捨失當", "珠寶非常名貴", "誠實信用"], answer: "B" },
+    { grade: "mid-high", subject: "chinese", text: "『揠苗助長』這句成語常用來比喻什麼？", options: ["做事非常勤奮", "急於求成，反而把事情弄壞", "幫助植物快快長大", "方法非常巧妙"], answer: "B" },
+    { grade: "mid-high", subject: "chinese", text: "下列哪一個字是『卑微』的『卑』的正確注音？", options: ["ㄅㄧ", "ㄅㄟ", "ㄆㄧˊ", "ㄅㄟˋ"], answer: "B" },
     // 中高年級 (mid-high) - 英文
     { grade: "mid-high", subject: "english", text: "Yesterday, I (go) to the park with my family. 空格應填入什麼時態？", options: ["go", "goes", "went", "going"], answer: "C" },
     { grade: "mid-high", subject: "english", text: "下列哪一個字用來表示『科學家』？", options: ["Artist", "Scientist", "Teacher", "Doctor"], answer: "B" },
+    { grade: "mid-high", subject: "english", text: "請問『圖書館』的英文單字是什麼？", options: ["Museum", "Library", "Market", "Station"], answer: "B" },
+    { grade: "mid-high", subject: "english", text: "單字『beautiful』的相反詞（醜陋的）是哪一個？", options: ["Pretty", "Ugly", "Happy", "Sad"], answer: "B" },
     // 中高年級 (mid-high) - 自然
     { grade: "mid-high", subject: "science", text: "水在受熱沸騰時，會轉化為何種狀態？", options: ["固態（冰）", "液態（水）", "氣態（水蒸氣）", "電漿態"], answer: "C" },
     { grade: "mid-high", subject: "science", text: "太陽系中，體積最大的行星是哪一顆？", options: ["地球", "火星", "木星", "土星"], answer: "C" },
+    { grade: "mid-high", subject: "science", text: "光在空氣中主要是以什麼方式傳播？", options: ["曲線傳播", "折線傳播", "直線傳播", "波動傳播"], answer: "C" },
+    { grade: "mid-high", subject: "science", text: "在光合作用中，植物吸入二氧化碳，並釋放出什麼氣體？", options: ["氧氣", "氮氣", "氫氣", "一氧化碳"], answer: "A" },
     // 中高年級 (mid-high) - 社會
     { grade: "mid-high", subject: "social", text: "台灣最高的山峰是哪一座？海拔大約是多少公尺？", options: ["阿里山，約2600公尺", "雪山，約3886公尺", "玉山，約3952公尺", "陽明山，約1120公尺"], answer: "C" },
-    { grade: "mid-high", subject: "social", text: "在台灣歷史上，安平古堡是哪一個國家最早建立的城堡（熱蘭遮城）？", options: ["西班牙", "荷蘭", "日本", "英國"], answer: "B" }
+    { grade: "mid-high", subject: "social", text: "在台灣歷史上，安平古堡是哪一個國家最早建立的城堡（熱蘭遮城）？", options: ["西班牙", "荷蘭", "日本", "英國"], answer: "B" },
+    { grade: "mid-high", subject: "social", text: "台灣最高的鐵路支線、也是著名的觀日出景點是哪裡？", options: ["平溪線", "內灣線", "阿里山森林鐵路", "集集線"], answer: "C" },
+    { grade: "mid-high", subject: "social", text: "為了保護消費者權益，台灣設有什麼專線可供消費者諮詢與申訴？", options: ["1950", "1999", "165", "113"], answer: "A" }
 ];
 
 // ==================== IndexedDB 個人照片資料庫輔助器 ====================
@@ -379,31 +399,36 @@ let GameState = {
     firebaseConfig: null
 };
 
-// 棋盤格子的靜態資料 (36格)
+// 棋盤格子的靜態資料 (42格)
 const CellDataTemplates = [
     { name: "起點", type: "start", emoji: "🚩", price: 0, color: "#CCCCCC" },
     { name: "草莓屋", type: "property", emoji: "🍦", price: 100, rent: 10, color: "#FFB7B2" },
     { name: "巧克力屋", type: "property", emoji: "🍦", price: 120, rent: 15, color: "#FFB7B2" },
     { name: "薄荷屋", type: "property", emoji: "🍦", price: 130, rent: 18, color: "#FFB7B2" },
     { name: "傳送門", type: "portal", emoji: "🌀", price: 0, color: "#E8AEFF" },
+    { name: "綜合挑戰", type: "all_quiz", emoji: "❓", price: 0, color: "#A7F3D0" }, // [NEW]
     { name: "棉花糖屋", type: "property", emoji: "🍬", price: 140, rent: 20, color: "#FFDAC1" },
     { name: "糖果屋", type: "property", emoji: "🍬", price: 160, rent: 25, color: "#FFDAC1" },
     { name: "棒棒糖屋", type: "property", emoji: "🍬", price: 180, rent: 30, color: "#FFDAC1" },
     { name: "捐款處", type: "tax", emoji: "🏛️", price: 0, color: "#CBD5E1" },
+    { name: "大轉盤", type: "wheel", emoji: "🎡", price: 0, color: "#F472B6" }, // [NEW]
     { name: "暴龍園", type: "property", emoji: "🦕", price: 200, rent: 40, color: "#E2F0CB" },
     { name: "三角龍園", type: "property", emoji: "🦕", price: 220, rent: 45, color: "#E2F0CB" },
     { name: "翼龍園", type: "property", emoji: "🦕", price: 240, rent: 50, color: "#E2F0CB" },
     { name: "劍龍園", type: "property", emoji: "🦕", price: 260, rent: 55, color: "#E2F0CB" },
     { name: "數學挑戰", type: "math_quiz", emoji: "❓", price: 0, color: "#93C5FD" },
+    { name: "綜合挑戰", type: "all_quiz", emoji: "❓", price: 0, color: "#A7F3D0" }, // [NEW]
     { name: "滑水道", type: "property", emoji: "🏊", price: 280, rent: 60, color: "#BFFCC6" },
     { name: "漂漂河", type: "property", emoji: "🏊", price: 300, rent: 70, color: "#BFFCC6" },
     { name: "巨浪池", type: "property", emoji: "🏊", price: 320, rent: 80, color: "#BFFCC6" },
     { name: "小惡魔", type: "imp", emoji: "😈", price: 0, color: "#FCA5A5" },
+    { name: "數學挑戰", type: "math_quiz", emoji: "❓", price: 0, color: "#93C5FD" }, // [NEW]
     { name: "粉紅堡", type: "property", emoji: "🏰", price: 350, rent: 100, color: "#FFC6FF" },
     { name: "星空堡", type: "property", emoji: "🏰", price: 380, rent: 120, color: "#FFC6FF" },
     { name: "水晶堡", type: "property", emoji: "🏰", price: 420, rent: 140, color: "#FFC6FF" },
     { name: "黃金堡", type: "property", emoji: "🏰", price: 450, rent: 160, color: "#FFC6FF" },
     { name: "魔法商店", type: "shop", emoji: "🧹", price: 0, color: "#FDE047" },
+    { name: "大轉盤", type: "wheel", emoji: "🎡", price: 0, color: "#F472B6" }, // [NEW]
     { name: "探險號", type: "property", emoji: "🚀", price: 340, rent: 90, color: "#D6E4FF" },
     { name: "追夢號", type: "property", emoji: "🚀", price: 360, rent: 100, color: "#D6E4FF" },
     { name: "先鋒號", type: "property", emoji: "🚀", price: 400, rent: 110, color: "#D6E4FF" },
@@ -416,7 +441,8 @@ const CellDataTemplates = [
     { name: "機器人工廠", type: "property", emoji: "🤖", price: 120, rent: 20, color: "#E2E8F0" },
     { name: "發條汽車", type: "property", emoji: "🚗", price: 140, rent: 25, color: "#E2E8F0" },
     { name: "毛絨小熊", type: "property", emoji: "🧸", price: 160, rent: 30, color: "#E2E8F0" },
-    { name: "魔法分店", type: "shop", emoji: "🧹", price: 0, color: "#FDE047" }
+    { name: "魔法分店", type: "shop", emoji: "🧹", price: 0, color: "#FDE047" },
+    { name: "數學挑戰", type: "math_quiz", emoji: "❓", price: 0, color: "#93C5FD" }
 ];
 
 // 可用動物棋子清單
@@ -802,7 +828,7 @@ async function startGame() {
     GameState.placedTraps = {};
     GameState.gameStarted = true;
 
-    // 建立 36 格地圖格
+    // 建立地圖格
     setupBoardCells();
 
     // 更新介面
@@ -847,24 +873,24 @@ function setupBoardCells() {
         cell.id = `cell-${index}`;
 
         // 判斷是否為角落格
-        if (index === 0 || index === 9 || index === 18 || index === 27) {
+        if (index === 0 || index === 11 || index === 21 || index === 32) {
             cell.classList.add("corner-cell");
         }
 
-        // 計算 CSS Grid 位置 (10x10 格子外圍)
+        // 計算 CSS Grid 位置 (12x11 格子外圍)
         let row = 1;
         let col = 1;
-        if (index >= 0 && index <= 9) {
+        if (index >= 0 && index <= 11) {
             row = 1;
             col = index + 1;
-        } else if (index > 9 && index <= 18) {
-            row = index - 9 + 1;
-            col = 10;
-        } else if (index > 18 && index <= 27) {
-            row = 10;
-            col = 10 - (index - 18);
-        } else if (index > 27 && index <= 35) {
-            row = 10 - (index - 27);
+        } else if (index > 11 && index <= 21) {
+            row = index - 11 + 1;
+            col = 12;
+        } else if (index > 21 && index <= 32) {
+            row = 11;
+            col = 12 - (index - 21);
+        } else if (index > 32 && index <= 41) {
+            row = 11 - (index - 32);
             col = 1;
         }
 
@@ -909,7 +935,7 @@ function setupBoardCells() {
 
 function renderPlayerTokens() {
     // 清空所有格子內的棋子容器
-    for (let i = 0; i < 36; i++) {
+    for (let i = 0; i < CellDataTemplates.length; i++) {
         document.getElementById(`cell-tokens-${i}`).innerHTML = "";
     }
 
@@ -1177,7 +1203,7 @@ function aiDecisionLogic() {
     if (player.items.remote > 0 && Math.random() > 0.6) {
         // 尋找前方 1~6 步是否有好地方
         for (let steps = 1; steps <= 6; steps++) {
-            const targetPos = (player.position + steps) % 36;
+            const targetPos = (player.position + steps) % CellDataTemplates.length;
             const targetCell = GameState.boardCells[targetPos];
             // 優先踩到起點 (0) 或是自己的地產 (升級) 或是空地 (購買)
             if (targetPos === 0 || (targetCell.type === 'property' && (!targetCell.owner || targetCell.owner.id === player.id))) {
@@ -1240,16 +1266,16 @@ function rollDiceAction() {
         3: {x: 0, y: -90},
         4: {x: 0, y: 90},
         5: {x: 90, y: 0},
-        6: {x: 180, y: 0, z: 180}
+        6: {x: 180, y: 0}
     };
 
-    diceElement1.style.transform = `rotateX(${targetRotations[roll1].x + xRand1}deg) rotateY(${targetRotations[roll1].y + yRand1}deg) rotateZ(${targetRotations[roll1].z}deg)`;
+    diceElement1.style.transform = `rotateX(${targetRotations[roll1].x + xRand1}deg) rotateY(${targetRotations[roll1].y + yRand1}deg)`;
     
     if (GameState.diceMode === 'double' && roll2 > 0) {
         document.getElementById("dice-container-2").style.display = "block";
         const xRand2 = (Math.floor(Math.random() * 3) + 3) * 360;
         const yRand2 = (Math.floor(Math.random() * 3) + 3) * 360;
-        diceElement2.style.transform = `rotateX(${targetRotations[roll2].x + xRand2}deg) rotateY(${targetRotations[roll2].y + yRand2}deg) rotateZ(${targetRotations[roll2].z}deg)`;
+        diceElement2.style.transform = `rotateX(${targetRotations[roll2].x + xRand2}deg) rotateY(${targetRotations[roll2].y + yRand2}deg)`;
     } else {
         document.getElementById("dice-container-2").style.display = "none";
     }
@@ -1291,7 +1317,7 @@ function movePlayerStepByStep(player, steps) {
             return;
         }
 
-        player.position = (player.position + 1) % 36;
+        player.position = (player.position + 1) % CellDataTemplates.length;
         currentStep++;
 
         // 經過起點 (不包含停在起點，停在起點也在 landOn 判斷)
@@ -1346,7 +1372,7 @@ async function landOnCellAction(player) {
             SoundEngine.playBuzzer();
             let newPos = pos;
             while (newPos === pos || GameState.boardCells[newPos].type === "portal") {
-                newPos = Math.floor(Math.random() * 36);
+                newPos = Math.floor(Math.random() * CellDataTemplates.length);
             }
             document.getElementById("turn-instruction").innerHTML = `🌀 進入魔法傳送門！被傳送到 <b>${GameState.boardCells[newPos].name}</b> 格子！`;
             setTimeout(() => {
@@ -1727,7 +1753,7 @@ function movePlayerBackstep(player, steps) {
             landOnCellAction(player); // 重新觸發退回格子的效果
             return;
         }
-        player.position = (player.position - 1 + 36) % 36;
+        player.position = (player.position - 1 + CellDataTemplates.length) % CellDataTemplates.length;
         currentStep++;
         SoundEngine.playMove();
         renderPlayerTokens();
@@ -2004,7 +2030,7 @@ function executeDestinyCardEffect(player, card) {
             break;
 
         case "teleport":
-            const randPos = Math.floor(Math.random() * 36);
+            const randPos = Math.floor(Math.random() * CellDataTemplates.length);
             setTimeout(() => {
                 player.position = randPos;
                 renderPlayerTokens();
